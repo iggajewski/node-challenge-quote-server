@@ -16,7 +16,7 @@ const quotes = require("./quotes.json");
 
 //START OF YOUR CODE...
 app.get("/", function (request, response) {
-  response.send("Gabriel's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Gabriel's Quote Server!  Ask me for /quotes/random, /quotes or quotes/search. In the quotes/search you can enter terms to find the quotes, e.g. /quotes/search?term=life.");
 });
 
 app.get("/quotes", function (request, response) {
