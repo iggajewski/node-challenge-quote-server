@@ -26,6 +26,18 @@ app.get("/quotes", function (request, response) {
 app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
+
+// searches in both author and quote field; case insensitive
+app.get("/quotes/search", function (request, response) {
+  let searchTerm = request.query.term.toLowerCase();
+  let foundQuotes = [];
+
+  for (let i = 0; i < quotes.length; ++i) {
+    if (quotes[i].quote.toLowerCase().includes(searchTerm) || quotes[i].author.toLowerCase().includes(searchTerm))
+      foundQuotes.push(quotes[i]);
+  }
+  response.send(foundQuotes);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
